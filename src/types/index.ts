@@ -15,14 +15,14 @@ export interface PostType {
     zone: TimestampType;
 }
 
-export interface FetchPostsSuccessResponseInterface extends Array<PostType> {
+export interface FetchSuccessResponseInterface extends Array<PostType> {
 }
 
-export interface FetchPostsSuccessActionInterface extends Action<typeof FETCH_DATA_SUCCESS> {
+export interface FetchSuccessActionInterface extends Action<typeof FETCH_DATA_SUCCESS> {
     type: typeof FETCH_DATA_SUCCESS;
-    payload: FetchPostsSuccessResponseInterface;
+    payload: FetchSuccessResponseInterface;
 }
 
-export interface FetchPostsRequestActionInterface extends Action<typeof FETCH_DATA_REQUEST> {
+export interface FetchRequestActionInterface extends Action<typeof FETCH_DATA_REQUEST> {
     type: typeof FETCH_DATA_REQUEST;
   }

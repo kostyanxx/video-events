@@ -9,7 +9,7 @@ export interface RootState {
 
 const VideoEvents = () => {
     const videoElement = useRef<HTMLVideoElement>(null);
-    const canvasRef = useRef<any>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const [progress, setProgress] = useState(0);
     const [max, setMax] = useState(10);
     const [current, setCurrent] = useState(0);
@@ -41,6 +41,7 @@ const VideoEvents = () => {
             const canvas = canvasRef.current;
             const ctx = canvas.getContext('2d');
             const timerId = setInterval(() => {
+                if (!ctx || !videoElement.current) return;
                 ctx.drawImage(videoElement.current, 0, 0, canvas.width, canvas.height);
                 ctx.stroke();
                 if (videoElement.current) {
@@ -86,6 +87,7 @@ const VideoEvents = () => {
         if (canvas) {
             const canvas = canvasRef.current;
             const ctx = canvas.getContext('2d');
+            if (!ctx || !videoElement.current) return;
             ctx.reset();
             ctx.drawImage(videoElement.current, 0, 0, canvas.width, canvas.height);
             objects.forEach((object) => {

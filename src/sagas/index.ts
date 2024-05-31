@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import * as actions from "../actions";
-import { FetchPostsSuccessResponseInterface } from "../types";
+import { FetchSuccessResponseInterface } from "../types";
 import { FETCH_DATA_REQUEST } from '../constants'
 
 const getEventList = async () => {
@@ -9,7 +9,7 @@ const getEventList = async () => {
 }
 
 function* fetchData(): Generator {
-    const data =(yield call(getEventList)) as FetchPostsSuccessResponseInterface;
+    const data =(yield call(getEventList)) as FetchSuccessResponseInterface;
     yield put(actions.fetchDataSuccess(data));
 }
 
